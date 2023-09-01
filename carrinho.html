@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho | BioTechMed</title>
+    <link rel="stylesheet" href="carrinho.css">
+    <script src="carrinho.js"></script>
+</head>
+
+<body>
+    <!-- Cabeçalho  -->
+
+    <div class="retangulo"></div>
+
+
+    <h1 class="menu"></h1>
+
+    <div class="logo">
+        <a href="index.html"><img src="imagelogo.png"></a>
+    </div>
+
+    <div class="cadastro">
+        <img src="imageentrar.png" class="imgenter">
+        <nav>
+            <ul>
+                <li class="login"><a href="#" id="login-link">
+                        <h4 class="enter">Entrar/Cadastrar</h4>
+                    </a></li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <!-- Janela modal de Login -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <form>
+                <label for="username">Nome de usuário:</label>
+                <input type="text" id="username" name="username">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password">
+                <button type="submit">Entrar</button>
+            </form>
+            <p>Esqueceu a senha? <a href="redefina.html">Redefina aqui</a></p>
+            <p>Não tem uma conta? <a href="criaconta.html">Crie uma aqui</a></p>
+
+        </div>
+    </div>
+
+
+    <div class="precisa">
+        <a href="needhelp.html"><img src="imagehelp.png"></a>
+        <h1>Precisa de ajuda?</h1>
+    </div>
+    <div class="favorito">
+        <a href="favs.html"><img src="imagefav.png"></a>
+        <h1>Favoritos</h1>
+    </div>
+    <div class="nuvem">
+        <a href="carrinho.html">
+            <img src="imagecarrinho.png"></a>
+        <h1>Carrinho</h1>
+    </div>
+
+
+    <script src="script.js"></script>
+    <script src="ampliar2.js"></script>
+    <!-- Fim do cabeçalho -->
+
+
+    <body>
+        <div class="carrinho">
+            <h1 class="compras">Carrinho de compras</h1>
+            <h2 class="available">Produtos disponíveis</h2>
+            <ul class="tabela">
+                <li>Exoesqueleto Robótico para Reabilitação Fisioterapêutica - R$ 170.000.911,00</li>
+                <li>Aparelho de Estimulação Elétrica Funcional (FES) - R$ 8.911,00</li>
+                <li>Dispositivo de Terapia Laser 880mw - R$ 5.300,00</li>
+                <li>Ressonância Magnética - R$ 104.911,00</li>
+                <li>Etiquetas RFID para equipamentos - R$ 411,00</li>
+                <li>Aparelho de Luz intensa Pulsada - R$ 27.920,50</li>
+            </ul>
+            <h2 class="available2">Adicionar ao carrinho</h2>
+            <form>
+                <label for="produto1" id="produto12">Produto:</label>
+
+                <select id="produto" name="produto">
+                    <option value="exo">Exoesqueleto Robótico para Reabilitação Fisioterapêutica</option>
+                    <option value="apa">Aparelho de Estimulação Elétrica Funcional (FES)</option>
+                    <option value="dis">Dispositivo de Terapia Laser 880mw</option>
+                    <option value="res">Ressonância Magnética</option>
+                    <option value="eti">Etiquetas RFID para equipamentos</option>
+                    <option value="apa2">Aparelho de Luz intensa Pulsada</option>
+                </select>
+
+                <label for="quantidade" id="quant1">Quantidade:</label>
+                <input type="number" id="quantidade" name="quantidade" min="1">
+                <button type="button" class="button" onclick="adicionar()">Adicionar</button>
+            </form>
+
+            <ul id="carrinho">
+                <li>Exoesqueleto Robótico para Reabilitação Fisioterapêutica - 0</li>
+                <li>Aparelho de Estimulação Elétrica Funcional (FES) - 0</li>
+                <li>Dispositivo de Terapia Laser 880mw - 0</li>
+                <li>Ressonância Magnética - 0</li>
+                <li>Etiquetas RFID para equipamentos - 0</li>
+                <li>Aparelho de Luz intensa Pulsada - 0</li>
+
+            </ul>
+            <h2 class="vtvt">Valor total</h2>
+            <p id="total">R$0,00</p>
+        </div>
+        <img class="carprincipal" src="carrinhoprincipal.png">
+
+        <img class="carprincipal" src="carrinhoprincipal.png">
+        <img class="bolsa" src="imagebolsa.png">
+        <img class="sap1" src="imagesapato1.png">
+        <img class="sap2" src="imagesapato2.png">
+        <img class="camisa" src="imagecamisa.png">
+        <img class="cabide" src="imagecabide.png">
+
+
+
+
+
+
+        <script>
+            function adicionar() {
+                let produto = document.getElementById("produto").value;
+                let quantidade = parseInt(document.getElementById("quantidade").value);
+                adicionarProduto(produto, quantidade);
+                atualizarCarrinho();
+                atualizarTotal();
+            }
+
+            function atualizarCarrinho() {
+                let carrinho = document.getElementById("carrinho").getElementsByTagName("li");
+                for (let i = 0; i < carrinho.length; i++) {
+                    carrinho[i].textContent = `${produtos[i]} - ${quantidades[i]}`;
+                }
+            }
+
+            function atualizarTotal() {
+                let total = calcularTotal();
+                document.getElementById("total").textContent = `R$${total.toFixed(2)}`;
+            }
+        </script>
+
+
+    </body>
+
+</html>
